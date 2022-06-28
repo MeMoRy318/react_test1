@@ -9,7 +9,7 @@ export default function Users ({postId}) {
     },[]);
 return (
     <div>
-        { users.map(value => <User key={value.id} item={value} postId={postId}/>)}
+        { users.map((value,index) => <User key={index} item={value} postId={postId}/>)}
     </div>
 );
 }
