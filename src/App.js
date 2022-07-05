@@ -1,6 +1,5 @@
+import Cars from "./cars/Cars";
 
-import CommentsForm from "./components/commentsForm/CommentsForm";
-import UsersForm from "./components/usersForm/UsersForm";
 
 function App() {
 
@@ -9,9 +8,7 @@ function App() {
     return (
 
     <div>
-        <UsersForm/>
-        <br/>
-        <CommentsForm/>
+<Cars/>
     </div>
   );
 }
