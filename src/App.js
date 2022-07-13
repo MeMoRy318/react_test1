@@ -1,10 +1,15 @@
+import {Comments, Posts, Users} from "./components";
 
 function App() {
 
   return (
-    <div>
-
-    </div>
+     <div>
+         <Comments/>
+         <br/>
+         <Posts/>
+         <br/>
+        <Users/>
+     </div>
   );
 }
 
