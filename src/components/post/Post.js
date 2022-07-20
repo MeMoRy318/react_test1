@@ -1,7 +1,6 @@
- function Post ({item}) {
+ function Post () {
 return (
     <div>
-        <div>{item.id}-{item.title} </div>
 
     </div>
 );

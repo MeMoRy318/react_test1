@@ -1,14 +1,19 @@
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
-function User ({item}) {
+import {usersStore} from "../../redux/reducers/users.store";
+
+function User ({user}) {
+    const {usersStore} = useSelector(state => state);
     const dispatch = useDispatch();
+
 return (
     <div>
         <div>
-            <div>{item.id}</div>
-            <div>{item.username}</div>
-            <div>{item.name}</div>
-            <button onClick={()=> dispatch({type:"GET_USER",payload:item.id})}>detalis</button>
+            <div>{user.id} - {user.name}</div>
+            <div>{user.username}</div>
+            <div>{user.email}</div>
+            <button onClick={()=>dispatch({type:"GET_USER", payload:{id:user.id,data:usersStore}})}>Detalis</button>
+
         </div>
       <br/>
     </div>

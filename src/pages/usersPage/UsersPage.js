@@ -2,14 +2,13 @@ import {useSelector} from "react-redux";
 import {User} from "../../components";
 
 function UsersPage () {
-
-    const {users} = useSelector(value => value);
-    const {user} = useSelector(state => state);
-
+const {usersStore,userStore} = useSelector(state => state);
 return (
     <div>
-        {user.email}
-        {users.map(value => <User key={value.id} item={value}/>)}
+        {userStore?.email}
+        {
+            usersStore.map(user => <User key={user.id} user={user}/>)
+        }
 
     </div>
 );
