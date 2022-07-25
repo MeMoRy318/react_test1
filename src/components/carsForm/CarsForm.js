@@ -17,22 +17,19 @@ const CarsForm = () => {
             setValue('price',upCar.price)
             setValue('year',upCar.year)
         }
-
     },[upCar])
 
     const onSubmit = async (data) => {
         if (upCar){
             await dispatch(carsAction.carForUpdate({id:upCar.id,car:data}))
-
         }else {
-
             await dispatch(carsAction.createCar({car:data}))
-
         }
         reset()
     }
 
     return (
+
         <form onSubmit={handleSubmit(onSubmit)}>
 
             <input type="text" placeholder={'model'} {...register('model')}/>

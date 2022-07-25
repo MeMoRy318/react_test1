@@ -15,11 +15,14 @@ const Cars = () => {
 
     return (
         <div>
+
             {isLoading && <h1>loading</h1>}
             {error && <h1>error</h1>}
+
             <div>
                 {cars.map(car => <Car key={car.id} car={car}/>)}
             </div>
+
         </div>
     );
 };

@@ -9,12 +9,15 @@ const Car = ({car}) => {
     return (
         <div>
             <div>
+
                 <div>{car.id}</div>
                 <div>{car.model}</div>
                 <div>{car.price}</div>
                 <div>{car.year}</div>
+
                 <button onClick={()=>dispatch(carsAction.upDateCar(car))}>update</button>
                 <button onClick={()=>dispatch(carsAction.deleteCar({id:car.id}))}>delete</button>
+
             </div>
             <br/>
 
