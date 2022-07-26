@@ -126,7 +126,7 @@ interface Iflight {
 }
 
 interface Ifirst_stage {
-    cores:[Iflight]
+    cores:Iflight[]
 }
 
 interface Ipayloads {
@@ -136,7 +136,7 @@ interface Ipayloads {
 }
 
 interface Isecond_stage {
-    payloads:[Ipayloads]
+    payloads:Ipayloads[]
 }
 
 interface Irocket {
