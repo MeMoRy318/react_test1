@@ -1,147 +1,276 @@
-//================================================CMD==================================================================
+// 1) створити інтерфейс на основі цього объекта:
 
-// tsc app.ts Компеляция
-// node app.js Запустити js
-// npm init
-// tsc -v
+// {
+//     "mission_name": "Starlink-15 (v1.0)",
+//     "launch_date_local": "2020-10-24T11:31:00-04:00",
+//     "launch_site": {
+//     "site_name_long": "Cape Canaveral Air Force Station Space Launch Complex 40"
+// },
+//     "links": {
+//     "article_link": null,
+//         "video_link": "https://youtu/J442-ti-Dhg"
+// },
+//     "rocket": {
+//     "rocket_name": "Falcon 9",
+//         "first_stage": {
+//         "cores": [
+//             {
+//                 "flight": 7,
+//                 "core": {
+//                     "reuse_count": 6,
+//                     "status": "unknown"
+//                 }
+//             }
+//         ]
+//     },
+//     "second_stage": {
+//         "payloads": [
+//             {
+//                 "payload_type": "Satellite",
+//                 "payload_mass_kg": 15400,
+//                 "payload_mass_lbs": 33951.2
+//             }
+//         ]
+//     }
+// }
+// }
 
-// ============================================function================================================================
-import axios from "axios";
-import {usersServices} from "./services/users.services";
 
 
-//==============================================import==================================================================
+interface Imission {
+    mission_name: string,
+    launch_date_local: string,
+    launch_site:{
+        site_name_long: string,
+    },
+    links: {
+        article_link: null,
+        video_link: string
+    },
+    rocket: {
+        rocket_name: string,
+        first_stage: {
+            cores: [
+                { flight:number,
+                    core: {
+                        reuse_count: string
+                        status: boolean
+                    }
+                }
+            ]
+        },
+        second_stage: {
+            payloads: [
+                {
+                    payload_type:string,
+                    payload_mass_kg: number,
+                    payload_mass_lbs: number
+                }
+            ]
+        }
+    }
+}
 
-const a = (arr:string[])=>{
-   return  arr.push("asd")
-};
-const b = (arr:number[]):number=>{
-    return arr.push(21)
-};
-const c = (a:string,b:string):string|number=>{
-    return a + b
-};
-const d = (a:number , b:number):number|string|boolean=>{
-    return a + b
-};
-const av = (arr:string[]):void => {
-    console.log(arr)
-};
-const bv = (arr:number[],number:number):void =>{
-   const x = arr.push(number)
-    console.log(x)
-};
+const mision:Imission = {
+    mission_name: "string",
+    launch_date_local: "string",
+    launch_site:{
+        site_name_long: "string",
+    },
+    links: {
+        article_link: null,
+        video_link: "string"
+    },
+    rocket: {
+        rocket_name: "string",
+        first_stage: {
+            cores: [
+                { flight:1,
+                    core: {
+                        reuse_count: "string",
+                        status: true
+                    }
+                }
+            ]
+        },
+        second_stage: {
+            payloads: [
+                {
+                    payload_type:'string',
+                    payload_mass_kg: 1,
+                    payload_mass_lbs: 1
+                }
+            ]
+        }
+    }
+}
 
-// =============================================Object=================================================================
-const users:{name:string,age:number,status:boolean} = {age:21,name:"vasya",status:true};
 
-interface Iuser {
-    name:string,
+interface Ilaunch_site {
+    site_name_long: string,
+}
+
+interface Ilinks {
+    article_link: null,
+    video_link: string
+}
+
+interface Icore {
+    reuse_count: string
+    status: boolean
+}
+
+interface Iflight {
+    flight:number,
+    core:Icore
+}
+
+interface Ifirst_stage {
+    cores:[Iflight]
+}
+
+interface Ipayloads {
+    payload_type:string,
+    payload_mass_kg: number,
+    payload_mass_lbs: number
+}
+
+interface Isecond_stage {
+    payloads:[Ipayloads]
+}
+
+interface Irocket {
+    rocket_name:string
+    first_stage:Ifirst_stage
+    second_stage:Isecond_stage
+}
+
+interface Imission1 {
+    mission_name: string,
+    launch_date_local: string,
+    launch_site:Ilaunch_site,
+    links: Ilinks,
+    rocket:Irocket
+
+}
+
+
+const mission1:Imission1 = {  mission_name: "string",
+    launch_date_local: "string",
+    launch_site:{
+        site_name_long: "string",
+    },
+    links: {
+        article_link: null,
+        video_link: "string"
+    },
+    rocket: {
+        rocket_name: "string",
+        first_stage: {
+            cores: [
+                { flight:1,
+                    core: {
+                        reuse_count: "string",
+                        status: true
+                    }
+                }
+            ]
+        },
+        second_stage: {
+            payloads: [
+                {
+                    payload_type:'string',
+                    payload_mass_kg: 1,
+                    payload_mass_lbs: 1
+                }
+            ]
+        }
+    }}
+
+// 2) протипізувати функції:
+
+// interface Iuser {
+//     name:string,
+//     age:number,
+//     gender:string
+// }
+//
+// interface Ifunction extends Iuser{
+//     sum: (a: number, b: number) => number,
+//     showSum:(a:number,b:number)=>void,
+//     incAge?:(inc:number)=>number,
+//     incAge2?:()=>number,
+//
+// }
+//
+// const asd:Ifunction = {
+//     name:"string",
+//     age:19,
+//     gender:"string",
+//     sum:(a, b)=>{
+//         return a+b
+//     },
+//     showSum:(a, b)=>{
+//         console.log(a+b)
+//     },
+//     incAge:( inc)=>{
+//         return this.age + inc
+//     }
+//
+// }
+// console.log(asd.incAge(21));
+// asd.showSum(2,2)
+// console.log(asd.sum(2, 2));
+//
+// const max:Iuser ={
+//     name:"string",
+//     age:12,
+//     gender:"string"
+// }
+//
+// class Rectangle implements Iuser,Ifunction {
+//     age: number;
+//     gender: string;
+//     name: string;
+//
+//     incAge2():number{
+//         return this.age
+//     }
+//
+//     showSum(a: number, b: number): void {
+//     }
+//
+//     sum(a: number, b: number): number {
+//         return 0;
+//     }
+//
+// }
+
+interface Iuserinterface {
+    name:String,
     age:number,
-    status:boolean,
-    adres:{
-        syty:string,
-        haus:number,
-    }
+    gender:string
 }
 
-interface Iadres {
-    syty:string,
-    hause:number
-
+const user:Iuserinterface = {
+    name:"string",
+    age:18,
+    gender:"string"
 }
 
-interface Iuser2<t> {
-    name:string,
-    age:number,
-    status:boolean,
-    data:t,
-    adres:Iadres,
+const sum = (a:number,b:number):number=>{
+    return a+b
+}
+const showSum = (a:number,b:number):void =>{
+    console.log(a + b);
 }
 
-const user3:Partial<Iadres>={syty:"asd"}
-
-
-const user:Iuser = {age:21,name:"vasya",status:true,adres:{syty:"lviv",haus:1}}
-
-const user2:Iuser2<number[]> = {age:21,name:"vasya",data:[1,2,3,4,5],status:true,adres:{hause:1,syty:"lviv"}}
-
-//==============================================Class==================================================================
-
-class Class {
-
-    constructor(private id: number, public name: string, protected age: number) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-    }
-
-
+const incAge = (user:Iuserinterface, inc:number):object=>{
+    user.age+=inc
+    return user
 }
 
-const userCllas = new Class(21,"vasya",19)
-
-interface IshapeAction {
-
-    area:()=>number;
-    perimeter:()=>number;
-    
-}
-
-interface Igreeting {
-    hello:()=> void;
-    
-}
-
-class Rectangle implements IshapeAction,Igreeting{
-    constructor(private a:number,private b:number) {
-    }
-
-    area(): number {
-        return this.a*this.b;
-    }
-
-    hello(): void {
-        console.log("hello")
-    }
-
-    perimeter(): number {
-        return this.a+this.b;
-    }
-    
-}
-
-const rectangle = new Rectangle(15,15)
-
-console.log(rectangle.area());
-console.log(rectangle.hello());
-console.log(rectangle.perimeter());
-
-class Tritangle implements IshapeAction{
-    constructor(private a:number,private b:number,private c:number) {
-    }
-    area(): number {
-        return this.a*this.b+this.c;
-    }
-
-    perimeter(): number {
-        return this.a*this.b/this.c;
-    }
-
-}
-
-const shapes:IshapeAction[] = [new Tritangle(12,12,10),new Rectangle(12,12) ]
-shapes[0].area()
-shapes[0].perimeter()
-shapes[1].area()
-shapes[1].perimeter()
-
-//===========================================axios======================================================================
-usersServices.getAll().then(({data}) => console.log(data))
-usersServices.getById(2).then(({data})=>data)
-
-
-
-
-
+console.log(sum(11,11))
+showSum(21,10)
+console.log(incAge(user, 12));
 
