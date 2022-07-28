@@ -1,0 +1,13 @@
+.Header{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: blue;
+    color: snow;
+    padding: 15px;
+    font-size: 25px;
+}
+
+.btn{
+    margin-right: 10PX;
+}
