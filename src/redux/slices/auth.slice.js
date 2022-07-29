@@ -4,7 +4,7 @@ import {authService} from "../../services";
 
 const initialState = {
     errors: null,
-    isAuth: null
+    isAuth:null
 };
 
 const register = createAsyncThunk(
@@ -18,13 +18,15 @@ const register = createAsyncThunk(
     }
 );
 
+
 const login = createAsyncThunk(
     'authSlice/login',
-    async ({user}, {rejectWithValue}) => {
+    async ({user},{rejectWithValue}) =>{
         try {
-            const {data} = await authService.login(user);
+            const {data} = await authService.login(user)
             return data
-        } catch (e) {
+
+        }catch (e) {
             return rejectWithValue(e.response.data)
         }
     }
@@ -36,7 +38,7 @@ const authSlice = createSlice({
     reducers: {},
     extraReducers: (builder) =>
         builder
-            .addCase(login.fulfilled, (state, action) => {
+            .addCase(login.fulfilled,(state, action) => {
                 state.isAuth = true
                 authService.setTokens(action.payload)
             })
@@ -57,6 +59,7 @@ const {reducer: authReducer} = authSlice;
 const authActions = {
     register,
     login
+
 }
 
 export {

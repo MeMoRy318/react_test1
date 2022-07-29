@@ -5,19 +5,17 @@ const _accessTokenKey = 'access'
 const _refreshTokenKey = 'refresh'
 
 export const authService = {
-    login: (user) => axiosService.post(urls.auth, user),
-    register: (user) => axiosService.post(urls.users, user),
-    refresh:(refresh)=>axiosService.post(`${urls.auth}/refresh`, {refresh}),
+    login: (user)=>axiosService.post(urls.auth,user),
+    register: (user)=>axiosService.post(urls.users,user),
 
-    setTokens: ({access, refresh}) => {
-        localStorage.setItem(_accessTokenKey, access)
-        localStorage.setItem(_refreshTokenKey, refresh)
+    setTokens:({access,refresh})=>{
+        localStorage.setItem(_accessTokenKey,access)
+        localStorage.setItem(_refreshTokenKey,refresh)
     },
-    deleteTokens: () => {
+    deleteTokens:()=>{
         localStorage.removeItem(_accessTokenKey)
         localStorage.removeItem(_refreshTokenKey)
     },
-    getAccessToken: () => localStorage.getItem(_accessTokenKey),
-    getRefreshToken: () => localStorage.getItem(_refreshTokenKey),
-
+    getAccessToken:()=>localStorage.getItem(_accessTokenKey),
+    getRefreshToken:()=>localStorage.getItem(_refreshTokenKey)
 }

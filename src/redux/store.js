@@ -2,16 +2,12 @@ import {combineReducers, configureStore} from "@reduxjs/toolkit";
 
 import {authReducer, carReducer} from "./slices";
 
-
-const rootReducer = combineReducers({
-    cars: carReducer,
-    auth: authReducer
+const rootReducers = combineReducers({
+    auth:authReducer,
+    cars:carReducer
 });
 
-const setupStore = () => configureStore({
-    reducer: rootReducer
+const setupStore = ()=> configureStore({
+    reducer:rootReducers
 });
-
-export {
-    setupStore
-}
+export {setupStore}

@@ -1,14 +1,13 @@
-import css from './Header.module.css';
+import css from './Header.module.css'
 import {useNavigate} from "react-router-dom";
-
 const Header = () => {
+
     const navigate = useNavigate();
+
     return (
         <div className={css.Header}>
-            <div className={css.btn}>
-                <button onClick={()=>navigate('/login')}>Login</button>
-                <button onClick={()=>navigate('/register')}>Register</button>
-            </div>
+            <button onClick={()=>navigate('/login')}>login</button>
+            <button onClick={()=>navigate('register')}>register</button>
         </div>
     );
 };
